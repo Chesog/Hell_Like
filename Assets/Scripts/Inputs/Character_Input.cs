@@ -73,7 +73,6 @@ public class Character_Input : MonoBehaviour
         else
         {
             jumpBufferTimeCounter -= Time.deltaTime;
-            //coyoteTimerCounter = 0.0f;
         }
 
         // To Fix
@@ -86,8 +85,10 @@ public class Character_Input : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0f,targetAngle,0f) * Vector3.forward;
             rigidbody.velocity = moveDir.normalized * speed + Vector3.up * rigidbody.velocity.y;
         }
-
-        //rigidbody.velocity = _CurrentMovement * speed + Vector3.up * rigidbody.velocity.y;
+        else
+        {
+            rigidbody.velocity = new Vector3(0f,rigidbody.velocity.y,0f);
+        }
 
         if (isSprinting)
         {
@@ -102,15 +103,7 @@ public class Character_Input : MonoBehaviour
     public void OnMove(InputValue input)
     {
         var movement = input.Get<Vector2>();
-        _CurrentMovement = new Vector3(movement.x, 0f, movement.y);
-        //if (movement.x != 0 && movement.y != 0)
-        //{
-        //    _CurrentMovement = new Vector3(movement.x, 0f, movement.y);
-        //}
-        //else
-        //{
-        //    rigidbody.velocity = new Vector3(0f,0f,0f);
-        //}
+        _CurrentMovement = new Vector3(movement.x, 0f, movement.y).normalized;
     }
 
     public void OnJump(InputValue input)
