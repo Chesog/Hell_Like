@@ -75,7 +75,6 @@ public class Character_Input : MonoBehaviour
             jumpBufferTimeCounter -= Time.deltaTime;
         }
 
-        // To Fix
 
         if (_CurrentMovement.magnitude >= 1f)
         {
