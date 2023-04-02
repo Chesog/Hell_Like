@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum Directions {Up,Down,Right,Left}
+public enum RoomType { Spawn_Room,Medium_Room,L_Room,Large_Room}
 public class Dungegon_Generator : MonoBehaviour
 {
     public class Cell
@@ -15,7 +16,7 @@ public class Dungegon_Generator : MonoBehaviour
     [SerializeField] private Vector2 mazeSize;
     [SerializeField] private Vector2 offSet;
     [SerializeField] private int starPos = 0;
-    [SerializeField] private GameObject room;
+    [SerializeField] private GameObject[] rooms;
 
     List<Cell> board;
 
@@ -34,14 +35,34 @@ public class Dungegon_Generator : MonoBehaviour
 
     private void DungegonGenerator() 
     {
+        int lastRamdom;
         for (int i = 0; i < mazeSize.x; i++)
         {
             for (int j = 0; j < mazeSize.y; j++)
             {
-                var newRoom = Instantiate(room,new Vector3(i * offSet.x, 0f, - j * offSet.y),Quaternion.identity,transform).GetComponent<Room_Behaviour>();
-                newRoom.UpdateRoom(board[Mathf.FloorToInt(i + j * mazeSize.x)].status);
+                Cell currentCell = board[(int)(i + j * mazeSize.x)];
+                if (currentCell.visited)
+                {
+                    int randomRoom = Random.RandomRange(0,rooms.Length);
+                    switch (randomRoom)
+                    {
+                        case (int)RoomType.Spawn_Room:
+                            offSet = new Vector2(100f,100f);
+                            break;
+                        case (int)RoomType.Medium_Room:
+                        case (int)RoomType.L_Room:
+                            offSet = new Vector2(100f,200f);
+                            break;
+                        case (int)RoomType.Large_Room:
+                            offSet = new Vector2(200f,200f);
+                            break;
+                    }
+                    var newRoom = Instantiate(rooms[randomRoom], new Vector3(i * offSet.x, 0f, -j * offSet.y), Quaternion.identity, transform).GetComponent<Room_Behaviour>();
+                    newRoom.UpdateRoom(board[Mathf.FloorToInt(i + j * mazeSize.x)].status);
 
-                newRoom.name += " " + i + " - " + j;
+                    newRoom.name += " " + i + " - " + j;
+                    lastRamdom = randomRoom;
+                }
             }
         }
     }
@@ -144,27 +165,27 @@ public class Dungegon_Generator : MonoBehaviour
         List<int> neightbors = new List<int>();
 
         // Check Up Neightbor
-        if (cell - mazeSize.x >= 0 && !board[Mathf.FloorToInt(cell - mazeSize.x)].visited)
+        if (cell - mazeSize.x >= 0 && !board[(int)(cell - mazeSize.x)].visited)
         {
-            neightbors.Add(Mathf.FloorToInt(cell - mazeSize.x));
+            neightbors.Add((int)(cell - mazeSize.x));
         }
 
         // Check Down Neightbor
-        if (cell + mazeSize.x >= board.Count && !board[Mathf.FloorToInt(cell + mazeSize.x)].visited)
+        if (cell + mazeSize.x < board.Count && !board[(int)(cell + mazeSize.x)].visited)
         {
-            neightbors.Add(Mathf.FloorToInt(cell + mazeSize.x));
+            neightbors.Add((int)(cell + mazeSize.x));
         }
 
         // Check Right Neightbor
-        if ((cell + 1) % mazeSize.x != 0 && !board[Mathf.FloorToInt(cell + 1)].visited)
+        if ((cell + 1) % mazeSize.x != 0 && !board[(int)(cell + 1)].visited)
         {
-            neightbors.Add(Mathf.FloorToInt(cell + 1));
+            neightbors.Add((int)(cell + 1));
         }
 
         // Check Left Neightbor
-        if (cell % mazeSize.x != 0 && !board[Mathf.FloorToInt(cell - 1)].visited)
+        if (cell % mazeSize.x != 0 && !board[(int)(cell - 1)].visited)
         {
-            neightbors.Add(Mathf.FloorToInt(cell - 1));
+            neightbors.Add((int)(cell - 1));
         }
 
         return neightbors;

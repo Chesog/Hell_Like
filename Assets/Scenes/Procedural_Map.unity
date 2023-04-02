@@ -300,10 +300,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78086f45dee8f4f4b8bad9739544060c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mazeSize: {x: 10, y: 3}
+  mazeSize: {x: 10, y: 10}
   offSet: {x: 100, y: 100}
   starPos: 0
-  room: {fileID: 2416638033567678079, guid: d455a9ae0bd7ed746acde7f9097a95be, type: 3}
+  rooms:
+  - {fileID: 2416638033567678079, guid: d455a9ae0bd7ed746acde7f9097a95be, type: 3}
+  - {fileID: 2416638033567678079, guid: 7b0afc9a368eb6d47bf6ba4582776814, type: 3}
+  - {fileID: 2416638033567678079, guid: 300da65bfef510e429ff85a953999446, type: 3}
 --- !u!1 &952663200
 GameObject:
   m_ObjectHideFlags: 0
