@@ -13,8 +13,8 @@ public class Dungegon_Generator : MonoBehaviour
     }
 
     [Header("SetUp")]
-    [SerializeField] private Vector2 mazeSize;
-    [SerializeField] private Vector2 offSet;
+    [SerializeField] private Vector2Int mazeSize;
+    [SerializeField] private Vector2Int offSet;
     [SerializeField] private int starPos = 0;
     [SerializeField] private GameObject[] rooms;
 
@@ -43,22 +43,9 @@ public class Dungegon_Generator : MonoBehaviour
                 Cell currentCell = board[(int)(i + j * mazeSize.x)];
                 if (currentCell.visited)
                 {
-                    int randomRoom = Random.RandomRange(0,rooms.Length);
-                    switch (randomRoom)
-                    {
-                        case (int)RoomType.Spawn_Room:
-                            offSet = new Vector2(100f,100f);
-                            break;
-                        case (int)RoomType.Medium_Room:
-                        case (int)RoomType.L_Room:
-                            offSet = new Vector2(100f,200f);
-                            break;
-                        case (int)RoomType.Large_Room:
-                            offSet = new Vector2(200f,200f);
-                            break;
-                    }
+                    int randomRoom = Random.Range(0,rooms.Length);
                     var newRoom = Instantiate(rooms[randomRoom], new Vector3(i * offSet.x, 0f, -j * offSet.y), Quaternion.identity, transform).GetComponent<Room_Behaviour>();
-                    newRoom.UpdateRoom(board[Mathf.FloorToInt(i + j * mazeSize.x)].status);
+                    newRoom.UpdateRoom(board[(i + j * mazeSize.x)].status);
 
                     newRoom.name += " " + i + " - " + j;
                     lastRamdom = randomRoom;
@@ -165,27 +152,27 @@ public class Dungegon_Generator : MonoBehaviour
         List<int> neightbors = new List<int>();
 
         // Check Up Neightbor
-        if (cell - mazeSize.x >= 0 && !board[(int)(cell - mazeSize.x)].visited)
+        if (cell - mazeSize.x >= 0 && !board[(cell - mazeSize.x)].visited)
         {
-            neightbors.Add((int)(cell - mazeSize.x));
+            neightbors.Add((cell - mazeSize.x));
         }
 
         // Check Down Neightbor
-        if (cell + mazeSize.x < board.Count && !board[(int)(cell + mazeSize.x)].visited)
+        if (cell + mazeSize.x < board.Count && !board[(cell + mazeSize.x)].visited)
         {
-            neightbors.Add((int)(cell + mazeSize.x));
+            neightbors.Add((cell + mazeSize.x));
         }
 
         // Check Right Neightbor
-        if ((cell + 1) % mazeSize.x != 0 && !board[(int)(cell + 1)].visited)
+        if ((cell + 1) % mazeSize.x != 0 && !board[(cell + 1)].visited)
         {
-            neightbors.Add((int)(cell + 1));
+            neightbors.Add((cell + 1));
         }
 
         // Check Left Neightbor
-        if (cell % mazeSize.x != 0 && !board[(int)(cell - 1)].visited)
+        if (cell % mazeSize.x != 0 && !board[(cell - 1)].visited)
         {
-            neightbors.Add((int)(cell - 1));
+            neightbors.Add((cell - 1));
         }
 
         return neightbors;
