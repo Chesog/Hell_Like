@@ -27,23 +27,30 @@ public class Dungegon_Generator : MonoBehaviour
         MazeGenerator();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void DungegonGenerator() 
     {
-        int lastRamdom;
+        StartCoroutine(_SpawnCorutine());
+    }
+
+
+    private IEnumerator _SpawnCorutine() 
+    {
         for (int i = 0; i < mazeSize.x; i++)
         {
             for (int j = 0; j < mazeSize.y; j++)
             {
-                Cell currentCell = board[(int)(i + j * mazeSize.x)];
+                Cell currentCell = board[(i + j * mazeSize.x)];
                 if (currentCell.visited)
                 {
-                    int randomRoom = - 1;
+                    float duration = 0.3f; // 3 seconds you can change this 
+                                         //to whatever you want
+                    float normalizedTime = 0;
+                    while (normalizedTime <= 1f)
+                    {
+                        normalizedTime += Time.deltaTime / duration;
+                        yield return null;
+                    }
+                    int randomRoom = -1;
                     List<int> availableRoom = new List<int>();
 
                     for (int k = 0; k < rooms.Length; k++)
@@ -55,13 +62,13 @@ public class Dungegon_Generator : MonoBehaviour
                             randomRoom = k;
                             break;
                         }
-                        else if(p == (int)Spawn_Type.Can_Spawn)
+                        else if (p == (int)Spawn_Type.Can_Spawn)
                         {
                             availableRoom.Add(k);
                         }
                     }
 
-                    if (randomRoom == - 1)
+                    if (randomRoom == -1)
                     {
                         if (availableRoom.Count > 0)
                         {
@@ -77,7 +84,6 @@ public class Dungegon_Generator : MonoBehaviour
                     newRoom.UpdateRoom(board[(i + j * mazeSize.x)].status);
 
                     newRoom.name += " " + i + " - " + j;
-                    lastRamdom = randomRoom;
                 }
             }
         }

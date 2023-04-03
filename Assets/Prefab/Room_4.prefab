@@ -752,7 +752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room: {fileID: 2416638033567678079}
-  minPos: {x: 8, y: 8}
+  minPos: {x: 0, y: 0}
   maxPos: {x: 10, y: 10}
   obligatory: 0
 --- !u!114 &7157825286948539149

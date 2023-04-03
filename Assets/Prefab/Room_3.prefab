@@ -619,7 +619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room: {fileID: 2416638033567678079}
-  minPos: {x: 5, y: 5}
+  minPos: {x: 0, y: 0}
   maxPos: {x: 10, y: 10}
   obligatory: 0
 --- !u!114 &7157825286948539149
@@ -1889,6 +1889,7 @@ GameObject:
   - component: {fileID: 8477840853120046810}
   - component: {fileID: 6891330277130279316}
   - component: {fileID: 4236098864881926903}
+  - component: {fileID: 4791495856438892710}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -1990,3 +1991,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!95 &4791495856438892710
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7684109794912193208}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dffa98c9114a78d47bd6929b92d4292f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
