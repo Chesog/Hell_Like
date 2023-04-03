@@ -18,9 +18,21 @@ public class Room_Rule : MonoBehaviour
         {
             return obligatory ? (int)Spawn_Type.Has_To_Spawn : (int)Spawn_Type.Can_Spawn;
         }
-        else
-        {
-            return (int)Spawn_Type.Cannot_Spawn;
-        }
+
+        return (int)Spawn_Type.Cannot_Spawn;
+    }
+
+    public GameObject GetRoom() 
+    {
+        return room;
+    }
+
+    public Vector2Int GetMinPos() 
+    {
+        return minPos;
+    }
+    public Vector2Int GetMaxPos()
+    {
+        return maxPos;
     }
 }

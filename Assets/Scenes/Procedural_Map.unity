@@ -304,10 +304,10 @@ MonoBehaviour:
   offSet: {x: 100, y: 100}
   starPos: 0
   rooms:
-  - {fileID: 2416638033567678079, guid: d455a9ae0bd7ed746acde7f9097a95be, type: 3}
-  - {fileID: 2416638033567678079, guid: 2f6669b5a2d817249982548c8dcedc46, type: 3}
-  - {fileID: 2416638033567678079, guid: e54f75c061c263a49a6f00c0daf27e62, type: 3}
-  - {fileID: 2416638033567678079, guid: 1fd8f567d10dad14080375a8265f858f, type: 3}
+  - {fileID: -8719453281095604991, guid: d455a9ae0bd7ed746acde7f9097a95be, type: 3}
+  - {fileID: 4596450914676789674, guid: 2f6669b5a2d817249982548c8dcedc46, type: 3}
+  - {fileID: -5331072185384085687, guid: e54f75c061c263a49a6f00c0daf27e62, type: 3}
+  - {fileID: -8331527845226914378, guid: 1fd8f567d10dad14080375a8265f858f, type: 3}
 --- !u!1 &952663200
 GameObject:
   m_ObjectHideFlags: 0

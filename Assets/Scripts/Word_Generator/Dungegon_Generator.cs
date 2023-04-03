@@ -16,7 +16,7 @@ public class Dungegon_Generator : MonoBehaviour
     [SerializeField] private Vector2Int mazeSize;
     [SerializeField] private Vector2Int offSet;
     [SerializeField] private int starPos = 0;
-    [SerializeField] private GameObject[] rooms;
+    [SerializeField] private Room_Rule[] rooms;
 
     List<Cell> board;
 
@@ -43,8 +43,37 @@ public class Dungegon_Generator : MonoBehaviour
                 Cell currentCell = board[(int)(i + j * mazeSize.x)];
                 if (currentCell.visited)
                 {
-                    int randomRoom = Random.Range(0,rooms.Length);
-                    var newRoom = Instantiate(rooms[randomRoom], new Vector3(i * offSet.x, 0f, -j * offSet.y), Quaternion.identity, transform).GetComponent<Room_Behaviour>();
+                    int randomRoom = - 1;
+                    List<int> availableRoom = new List<int>();
+
+                    for (int k = 0; k < rooms.Length; k++)
+                    {
+                        int p = rooms[k].ProbabilityOfSpawning(i, j);
+
+                        if (p == (int)Spawn_Type.Has_To_Spawn)
+                        {
+                            randomRoom = k;
+                            break;
+                        }
+                        else if(p == (int)Spawn_Type.Can_Spawn)
+                        {
+                            availableRoom.Add(k);
+                        }
+                    }
+
+                    if (randomRoom == - 1)
+                    {
+                        if (availableRoom.Count > 0)
+                        {
+                            randomRoom = availableRoom[Random.Range(0, availableRoom.Count)];
+                        }
+                        else
+                        {
+                            randomRoom = 0;
+                        }
+                    }
+
+                    var newRoom = Instantiate(rooms[randomRoom].GetRoom(), new Vector3(i * offSet.x, 0f, -j * offSet.y), Quaternion.identity, transform).GetComponent<Room_Behaviour>();
                     newRoom.UpdateRoom(board[(i + j * mazeSize.x)].status);
 
                     newRoom.name += " " + i + " - " + j;
