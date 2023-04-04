@@ -300,8 +300,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78086f45dee8f4f4b8bad9739544060c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mazeSize: {x: 8, y: 4}
-  offSet: {x: 100, y: 100}
+  mazeSize: {x: 10, y: 10}
+  offSet: {x: 140, y: 140}
   starPos: 0
   rooms:
   - {fileID: -8719453281095604991, guid: d455a9ae0bd7ed746acde7f9097a95be, type: 3}
