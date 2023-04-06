@@ -225,6 +225,71 @@ MonoBehaviour:
   mouseSensitivity: 100
   xRotation: 0
   character: {fileID: 1640865199}
+--- !u!1 &189323690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 189323692}
+  - component: {fileID: 189323693}
+  - component: {fileID: 189323691}
+  m_Layer: 0
+  m_Name: Procedural_Mesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &189323691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189323690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3361c4e8851bf2d4e8bf6a08f5053fc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GridSize: {x: 80, y: 40, z: 80}
+  material: {fileID: 2100000, guid: caed3757d6aa0e74995f133967f733fc, type: 2}
+  mesh: {fileID: 0}
+  meshCollider: {fileID: 0}
+  zoom: 1
+  noiseLimit: 0.5
+--- !u!4 &189323692
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189323690}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &189323693
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189323690}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &881643121
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,58 +321,6 @@ Transform:
   m_Father: {fileID: 1640865199}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &886649760
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 886649761}
-  - component: {fileID: 886649762}
-  m_Layer: 0
-  m_Name: Dungegon_Generator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &886649761
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 886649760}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &886649762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 886649760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78086f45dee8f4f4b8bad9739544060c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mazeSize: {x: 10, y: 10}
-  offSet: {x: 140, y: 140}
-  starPos: 0
-  rooms:
-  - {fileID: -8719453281095604991, guid: d455a9ae0bd7ed746acde7f9097a95be, type: 3}
-  - {fileID: 4596450914676789674, guid: 2f6669b5a2d817249982548c8dcedc46, type: 3}
-  - {fileID: -5331072185384085687, guid: e54f75c061c263a49a6f00c0daf27e62, type: 3}
-  - {fileID: -8331527845226914378, guid: 1fd8f567d10dad14080375a8265f858f, type: 3}
 --- !u!1 &952663200
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,7 +525,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1640865194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.49, z: -16.94}
+  m_LocalPosition: {x: 34, y: 60.2, z: 2.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

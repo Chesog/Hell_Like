@@ -15,7 +15,6 @@ public class Mesh_Generator : MonoBehaviour
     Mesh mesh;
     MeshCollider meshCollider;
 
-
     // Start is called before the first frame update
     private void Start()
     {
