@@ -255,11 +255,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3361c4e8851bf2d4e8bf6a08f5053fc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GridSize: {x: 80, y: 40, z: 80}
+  GridSize: {x: 100, y: 50, z: 100}
   material: {fileID: 2100000, guid: caed3757d6aa0e74995f133967f733fc, type: 2}
   mesh: {fileID: 0}
   meshCollider: {fileID: 0}
-  zoom: 1
+  zoom: 2
   noiseLimit: 0.5
 --- !u!4 &189323692
 Transform:
