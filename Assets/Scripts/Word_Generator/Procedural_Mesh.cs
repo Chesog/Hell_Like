@@ -6,12 +6,15 @@ public class Procedural_Mesh : MonoBehaviour
     [SerializeField] Material material = null;
     [SerializeField] Mesh mesh = null;
     [SerializeField] MeshCollider meshCollider = null;
-    [SerializeField] private float zoom = 1f;
+    [SerializeField] private float zoomMinValue = 2f;
+    [SerializeField] private float zoomMaxValue = 10f;
+    [SerializeField] private float zoom = 0f;
     [SerializeField] private float noiseLimit = 0.5f;
 
     private void Start()
     {
         meshCollider = GetComponent<MeshCollider>();
+        zoom = Random.Range(zoomMinValue, zoomMaxValue);
 
         MakeGrid();
         //Noise2d();
